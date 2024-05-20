@@ -1,11 +1,21 @@
 import React from "react";
 
-const Loader = () => {
+const Loader = ({ color }) => {
+  const colorClasses = {
+    blue: "fill-blue-500", // Map 'blue' to 'bg-purple-500'
+    red: "fill-red-500",
+    purple: "fill-purple-500",
+    yellow: "fill-blue-500",
+    // Add more color mappings as needed
+  };
+
+  const bgColorClass = colorClasses[color] || "fill-default-color";
+
   return (
     <div role="status " className="flex justify-center items-center">
       <svg
         aria-hidden="true"
-        class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+        className={`w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 ${bgColorClass} `}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +29,7 @@ const Loader = () => {
           fill="currentFill"
         />
       </svg>
-      <span class="sr-only">Loading...</span>
+      <span className="sr-only">Loading...</span>
     </div>
   );
 };

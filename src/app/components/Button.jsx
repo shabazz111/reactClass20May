@@ -2,7 +2,6 @@ import React from "react";
 import Loader from "./Loader";
 
 const Button = ({ isLoading, onClickEvent, color }) => {
-
   const colorClasses = {
     blue: "bg-blue-500", // Map 'blue' to 'bg-purple-500'
     red: "bg-red-500",
@@ -18,7 +17,7 @@ const Button = ({ isLoading, onClickEvent, color }) => {
       onClick={onClickEvent}
       className={`${bgColorClass} text-white rounded-md p-2 mt-2 flex justify-center items-center w-full cursor-pointer`}
     >
-      {isLoading ? <Loader /> : "Submit"}
+      {isLoading ? <Loader color={color} /> : "Submit"}
     </div>
   );
 };

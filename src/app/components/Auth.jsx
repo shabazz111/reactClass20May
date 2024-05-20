@@ -3,11 +3,14 @@ import Button from "./Button";
 import { Link } from "react-router-dom";
 
 const Auth = ({ formTitle, color, isLoading, formType, onClickEvent }) => {
+  const isSignup = formType == "signup";
+  const isLogin = formType == "login";
+  const isPassword = formType == "forgotPassword";
   return (
     <section className="w-full h-screen bg-gray-400 flex justify-center items-center">
       <div className="w-96 rounded-xl bg-white p-4">
         <span className="text-purple-500">{formTitle} Form</span>
-        {formType == "signup" ? (
+        {isSignup ? (
           <input
             type="text"
             placeholder="Username"
@@ -15,7 +18,7 @@ const Auth = ({ formTitle, color, isLoading, formType, onClickEvent }) => {
           />
         ) : null}
 
-        {formType == "signup" || formType == "login" ? (
+        {isSignup || isLogin ? (
           <input
             type="email"
             placeholder="Email"
@@ -23,7 +26,7 @@ const Auth = ({ formTitle, color, isLoading, formType, onClickEvent }) => {
           />
         ) : null}
 
-        {formType == "signup" || "login" || "forgotPassword" ? (
+        {isSignup || "login" || "forgotPassword" ? (
           <input
             type="password"
             placeholder="Password"
@@ -31,7 +34,7 @@ const Auth = ({ formTitle, color, isLoading, formType, onClickEvent }) => {
           />
         ) : null}
 
-        {formType == "forgotPassword" ? (
+        {isPassword ? (
           <input
             type="password"
             placeholder="confirm Password"
@@ -42,7 +45,7 @@ const Auth = ({ formTitle, color, isLoading, formType, onClickEvent }) => {
         {/* Remember me and forgot password */}
 
         <div className="flex w-full mt-4 items-center  justify-between ">
-          {formType == "login" ? (
+          {isLogin ? (
             <div className="flex items-center h-full gap-2 text-sm">
               <input
                 type="checkbox"
@@ -60,7 +63,7 @@ const Auth = ({ formTitle, color, isLoading, formType, onClickEvent }) => {
           ) : null}
 
           <div className="text-blue-600 text-sm cursor-pointer">
-            {formType != "forgotPassword" ? (
+            {!isPassword ? (
               <Link to="/password">Forgot password?</Link>
             ) : null}
           </div>
@@ -71,7 +74,7 @@ const Auth = ({ formTitle, color, isLoading, formType, onClickEvent }) => {
           color={color}
         />
         <div className="flex gap-2 justify-center items-center">
-          {formType == "signup" ? (
+          {isSignup ? (
             <>
               Already have an account?
               <Link to="/" className="text-sm text-blue-600">
